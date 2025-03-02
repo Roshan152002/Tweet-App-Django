@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% load static %} 
+
+{% block title %}
+    Tweet List
+{% endblock title %}
+
+{% block content %}
+<section class="container-fluid" id="main-content">
+    <a href="{% url 'tweet_create' %}" class="btn btn-primary mt-5">Create</a>
+    <div class="row gap-3 justify-content-evenly">
+        {% for twet in tweets %}
+        <div class="card" style="width: 18rem;">
+            {% if twet.photo %}
+                <img src="{{ twet.photo.url }}" class="card-img-top" alt="Tweet Image">
+            {% else %}
+                <img src="{% static 'default_image.jpg' %}" class="card-img-top" alt="No Image Available">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{twet.user.username}}</h5>
+              <p class="card-text">{{twet.tweet_msg}}</p>
+              {% if twet.user == user %}
+                <a href="{% url 'tweet_edit' twet.id%}" class="btn btn-primary">Edit</a>
+                <a href="{%url 'tweet_delete' twet.id%}" class="btn btn-danger">Delete</a>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+  </section>
+{% endblock content %}

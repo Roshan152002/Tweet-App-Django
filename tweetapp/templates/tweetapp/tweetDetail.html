@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Tweet Detail
+{% endblock title %}
+
+{% block content %}
+  <h1 class="text-start">This is the home page</h1>
+  
+  <section class="container-fluid" id="main-content">
+    <div class="row gap-3 justify-content-evenly">
+        <div class="card" style="width: 18rem;">
+            {% if twet.photo %}
+                <img src="{{ twet.photo.url }}" class="card-img-top" alt="Tweet Image">
+            {% else %}
+                <img src="{% static 'default_image.jpg' %}" class="card-img-top" alt="No Image Available">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{twet.user.username}}</h5>
+              <p class="card-text">{{twet.tweet_msg}}</p>
+              <a href="{url 'editTweet' twet.id }" class="btn btn-primary">Edit</a>
+              <a href="{url 'deleteTweet' twet.id }" class="btn btn-danger">Delete</a>
+            </div>
+          </div>
+    </div>
+  </section>
+{% endblock content %}

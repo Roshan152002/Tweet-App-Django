@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Delete
+{% endblock title %}
+
+{% block content %}
+  <h1 class="text-start">Are you Sure ?? You Want to delete this Tweet !!</h1>
+  <section class="container-fluid" id="main-content">
+    <div class="row gap-3 justify-content-evenly">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a href="{% url 'tweet_list' %}" class="btn btn-success">Cancel</a>
+            </form>
+        </div>
+    </section>
+{% endblock content %}

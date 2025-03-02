@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    create form
+{% endblock title %}
+
+{% block content %}
+  <h1 class="text-start">This is the home page</h1>
+  <section class="container-fluid" id="main-content">
+    <div class="row gap-3 justify-content-evenly">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{% url 'tweet_list' %}" class="btn btn-success">Back</a>
+        </form>
+    </section>
+{% endblock content %}
