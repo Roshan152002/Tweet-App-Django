@@ -1,4 +1,4 @@
-from django.shortcuts import render ,redirect ,get_object_or_404
+JJfrom django.shortcuts import render ,redirect ,get_object_or_404
 from .models import Tweets
 from .forms import TweetForm , UserRegistrationForm
 from django.contrib.auth.decorators import login_required
@@ -72,5 +72,5 @@ def user_login(request):
 
 @login_required
 def user_logout(request):
-    auth_logout(request)  # ✅ Use `auth_logout` instead of `logout`
+    auth_logout(request)
     return redirect('login')
