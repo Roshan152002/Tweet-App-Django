@@ -1,4 +1,4 @@
-JJfrom django.shortcuts import render ,redirect ,get_object_or_404
+from django.shortcuts import render ,redirect ,get_object_or_404
 from .models import Tweets
 from .forms import TweetForm , UserRegistrationForm
 from django.contrib.auth.decorators import login_required
